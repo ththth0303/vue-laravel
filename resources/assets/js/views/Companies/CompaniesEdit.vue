@@ -1,45 +1,35 @@
 <template>
     <div>
         <div class="form-group">
-            <router-link :to="{name: 'companies'}" class="btn btn-success">Back</router-link>
+            <router-link :to="{name: 'Companies'}" class="btn btn-success">Back</router-link>
         </div>
- 
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ message }}</div>
-            <div class="panel-body">
-                <vue-loading type="spiningDubbles" color="#2ab27b" :size="{ width: '50px', height: '50px' }" v-if="isLoading"></vue-loading>
-                <form v-on:submit="saveForm()" v-else>
-                    <div class="">
-                        <div class="col-xs-12 form-group">
-                            <label class="control-label">Company name</label>
-                            <input type="text" v-model="company.name" class="form-control">
-                        </div>
+        <vue-loading type="spiningDubbles" color="#2ab27b" :size="{ width: '50px', height: '50px' }" v-if="isLoading"></vue-loading>
+         <div class="card" v-else>
+                <form v-on:submit="saveForm()">
+            <div class="card-header">Create new company</div>
+            <div class="card-body">
+                    <div class="form-group row">
+                        <label class="control-label">Company name</label>
+                        <input type="text" v-model="company.name" class="form-control">
                     </div>
-                    <div class="">
-                        <div class="col-xs-12 form-group">
-                            <label class="control-label">Company address</label>
-                            <input type="text" v-model="company.address" class="form-control">
-                        </div>
+                    <div class="form-group row">
+                        <label class="control-label">Company address</label>
+                        <input type="text" v-model="company.address" class="form-control">
                     </div>
-                    <div class="">
-                        <div class="col-xs-12 form-group">
-                            <label class="control-label">Company website</label>
-                            <input type="text" v-model="company.website" class="form-control">
-                        </div>
+                    <div class="form-group row">
+                        <label class="control-label">Company website</label>
+                        <input type="text" v-model="company.website" class="form-control">
                     </div>
-                    <div class="">
-                        <div class="col-xs-12 form-group">
-                            <label class="control-label">Company email</label>
-                            <input type="text" v-model="company.email" class="form-control">
-                        </div>
+                    <div class="form-group row">
+                        <label class="control-label">Company email</label>
+                        <input type="text" v-model="company.email" class="form-control">
                     </div>
-                    <div class="">
-                        <div class="col-xs-12 form-group">
-                            <button class="btn btn-success">Create</button>
-                        </div>
-                    </div>
-                </form>
             </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary" @click="saveForm()"><i class="fa fa-dot-circle-o"></i> Edit</button>
+                <button type="reset" class="btn btn-danger"><i class="fa fa-dot-circle-o"></i> Reset</button>
+            </div>
+                </form>
         </div>
     </div>
 </template>
@@ -83,7 +73,7 @@
                 var newCompany = app.company;
                 axios.patch('/api/v1/companies/' + app.companyId, newCompany)
                     .then(function (resp) {
-                        app.$router.replace('/');
+                        app.$router.replace('/Companies');
                     })
                     .catch(function (resp) {
                         console.log(resp);
