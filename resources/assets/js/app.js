@@ -10,7 +10,17 @@ require('./bootstrap');
 window.Vue = require('vue');
 window.Vue.use(VueRouter);
 window.Vue.use(BootstrapVue)
+window.Vue.use(VeeValidate, {
+    class: false, classNames: {
+        touched: 'touched', // the control has been blurred
+        untouched: 'untouched', // the control hasn't been blurred
+        valid: 'valid', // model is valid
+        invalid: 'invalid', // model is invalid
+        pristine: 'pristine', // control has not been interacted with
+        dirty: 'dirty' // control has been interacted with 
+    }});
 
+import VeeValidate from 'vee-validate';
 import VueRouter from 'vue-router';
 import BootstrapVue from 'bootstrap-vue'
 import RouterConfig from './router/index.js'
