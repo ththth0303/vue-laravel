@@ -31,7 +31,7 @@ export default {
           },
           children: [
             {
-              path: 'reate',
+              path: 'create',
               name: 'Create',
               component: CompaniesCreate
             },
