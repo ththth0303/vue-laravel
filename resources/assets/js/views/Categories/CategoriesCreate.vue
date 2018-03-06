@@ -63,7 +63,7 @@
             validateBeforeSubmit() {
                 this.$validator.validateAll().then((result) => {
                     if (result) {
-                        saveForm();
+                        this.saveForm();
                     } else {
                         event.preventDefault();
                     }

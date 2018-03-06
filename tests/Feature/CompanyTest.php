@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Http\Controllers\Api\V1\CompaniesController;
+use App\User;
 
 class CompanyTest extends TestCase
 {
@@ -35,5 +36,13 @@ class CompanyTest extends TestCase
                 ]
             ]
         )->assertStatus(200);
+    }
+
+    public function testViewIndex()
+    {
+        $user = new User(array('name' => 'Th'));
+        $this->be($user);
+        $response = $this->get('/admin/');
+        $response->assertViewIs('admin.companies.index');
     }
 }
