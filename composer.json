@@ -54,11 +54,13 @@
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize",
             "php artisan key:generate",
+            "chmod -R 777 public/",
             "@deploy"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize",
+            "php artisan key:generate",
             "@deploy"
         ]
     },
