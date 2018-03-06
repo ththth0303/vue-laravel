@@ -63,3 +63,4 @@ jobs:
           path: /phpunit
       - store_artifacts:
           path: /phpunit
+      - run: phpcs --standard=Framgia --report-checkstyle=.framgia-ci-reports/phpcs.xml app
